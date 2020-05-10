@@ -51,3 +51,19 @@ variable "ssh_public_key_file" {
   type        = string
   default     = "id_rsa_az.pub"
 }
+
+variable "deployment_target" {
+  description = "Defines the file used for public ssh key"
+  type        = string
+  default     = "ESXI"
+}
+
+variable "esx_names" {
+  description = "Defines the file used for public ssh key"
+  type        = list
+  default     = [
+      "esx01",
+      "esx02",
+      "esx03"
+  ]
+}
