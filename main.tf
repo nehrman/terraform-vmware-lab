@@ -39,10 +39,10 @@ resource "local_file" "script_pwsh" {
       deployment_target = var.deployment_target
       gateway_ip_addr = cidrhost(packet_reserved_ip_block.vmware_lab.cidr_notation, 1)
       vcsa_ip_addr = cidrhost(packet_reserved_ip_block.vmware_lab.cidr_notation, 3)
-      vcsa_host_name = "vcsa"
-      vm_domain_name = "my-v-world.fr"
-      vc_datacenter_name = "MYVWORLD"
-      vc_vsan_cluster_name = "VSANCLUSTER01"
+      vcsa_host_name = var.vcsa_host_name
+      vm_domain_name = var.vm_domain_name
+      vc_datacenter_name = var.vc_datacenter_name
+      vc_vsan_cluster_name = var.vc_vsan_cluster_name
       esx = zipmap(var.esx_names, [cidrhost(packet_reserved_ip_block.vmware_lab.cidr_notation, 4), cidrhost(packet_reserved_ip_block.vmware_lab.cidr_notation, 5), cidrhost(packet_reserved_ip_block.vmware_lab.cidr_notation, 6)])
   })
   filename = "${path.module}/Scripts/vsphere-6.7-vghetto-standard-lab-deployment.ps1"

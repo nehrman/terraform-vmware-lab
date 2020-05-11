@@ -1,3 +1,9 @@
+###########################################################
+#                                                         #
+#     Variables for configuring Packet Deployment         #
+#                                                         #
+###########################################################
+
 variable "project_name" {
   description = "Defines the Project Name in Packet"
   type        = string
@@ -52,14 +58,20 @@ variable "ssh_public_key_file" {
   default     = "id_rsa_az.pub"
 }
 
+###########################################################
+#                                                         #
+#     Variables for configuring Homelab Deployment        #
+#                                                         #
+###########################################################
+
 variable "deployment_target" {
-  description = "Defines the file used for public ssh key"
+  description = "Defines the target for the deployment. Value could be ESXI, VCENTER or VMC."
   type        = string
   default     = "ESXI"
 }
 
 variable "esx_names" {
-  description = "Defines the file used for public ssh key"
+  description = "Defines the list of ESXi names used in the deployment."
   type        = list
   default     = [
       "esx01",
@@ -67,3 +79,28 @@ variable "esx_names" {
       "esx03"
   ]
 }
+
+variable "vcsa_host_name" {
+  description = "Defines the hostname (short) of the VCSA appliance."
+  type        = string
+  default     = "vcsa"
+}
+
+variable "vm_domain_name" {
+  description = "Defines the name of the domain (for FQDN and Domain search)."
+  type        = string
+  default     = "my-v-world.fr"
+}
+
+variable "vc_datacenter_name" {
+  description = "Defines the name of the Datacenter in VCSA Appliance."
+  type        = string
+  default     = "MYVWORLD"
+}
+
+variable "vc_vsan_cluster_name" {
+  description = "Defines the name of the ESXi / VSAN cluster in VCSA Appliance."
+  type        = string
+  default     = "VSANCLUSTER01"
+}
+
