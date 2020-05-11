@@ -56,7 +56,7 @@ $ESXiProfileName = 'ESXi-6.5.0-20170404001-standard' # Used for online upgrade o
 # Nested ESXi VMs to deploy
 $NestedESXiHostnameToIPs = @{
     %{ for esx, ip in esx ~}
-    "${esx}" = "${ip}"
+    "${esx}.${vm_domain_name}" = "${ip}"
     %{ endfor ~}
 }
 
@@ -70,7 +70,7 @@ $NestedESXiCapacityvDisk = "8" #GB
 $VCSADeploymentSize = "tiny"
 $VCSADisplayName = "vcsa"
 $VCSAIPAddress = "${vcsa_ip_addr}"
-$VCSAHostname = "${vcsa_host_name}" #Change to IP if you don't have valid DNS
+$VCSAHostname = "${vcsa_host_name}.${vm_domain_name}" #Change to IP if you don't have valid DNS
 $VCSAPrefix = "24"
 $VCSASSODomainName = "vsphere.local"
 $VCSASSOPassword = "VMware1!"
@@ -131,7 +131,7 @@ $upgradeESXi = 0
 # Set to 1 only if you want to upgrade using local bundle specified in $ESXi65OfflineBundle
 $offlineUpgrade = 0
 # Enable verbose output to a new PowerShell Console. Thanks to suggestion by Christian Mohn
-$enableVerboseLoggingToNewShell = 1
+$enableVerboseLoggingToNewShell = 0
 
 $ENV:Temp = "/tmp"
 
@@ -168,8 +168,8 @@ $deployNestedESXiVMs = 1
 $deployVCSA = 1
 $setupNewVC = 1
 $addESXiHostsToVC = 1
-$configureVSANDiskGroups = 0
-$clearVSANHealthCheckAlarm = 0
+$configureVSANDiskGroups = 1
+$clearVSANHealthCheckAlarm = 1
 $configurevMotion = 1
 $setupVXLAN = 0
 $configureNSX = 0

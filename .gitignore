@@ -5,3 +5,5 @@ terraform
 terraform.zip
 *.pub
 *.ps1
+*.log
+*.info
