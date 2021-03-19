@@ -61,35 +61,35 @@ $NestedESXiHostnameToIPs = @{
 }
 
 # Nested ESXi VM Resources
-$NestedESXivCPU = "2"
-$NestedESXivMEM = "6" #GB
-$NestedESXiCachingvDisk = "4" #GB
-$NestedESXiCapacityvDisk = "8" #GB
+$NestedESXivCPU = "${esxivCPU}"
+$NestedESXivMEM = "${esxivMEM}" #GB
+$NestedESXiCachingvDisk = "${esxicachingvdisk}" #GB
+$NestedESXiCapacityvDisk = "${esxicapavdisk}" #GB
 
 # VCSA Deployment Configuration
 $VCSADeploymentSize = "tiny"
 $VCSADisplayName = "vcsa"
 $VCSAIPAddress = "${vcsa_ip_addr}"
 $VCSAHostname = "${vcsa_host_name}.${vm_domain_name}" #Change to IP if you don't have valid DNS
-$VCSAPrefix = "24"
+$VCSAPrefix = "28"
 $VCSASSODomainName = "vsphere.local"
-$VCSASSOPassword = "VMware1!"
-$VCSARootPassword = "VMware1!"
-$VCSASSHEnable = "true"
+$VCSASSOPassword = "${vcsassopassword}"
+$VCSARootPassword = "${vcsarootpassword}"
+$VCSASSHEnable = "${vcsasshenable}"
 
 # General Deployment Configuration for Nested ESXi, VCSA & NSX VMs
-$VirtualSwitchType = "VSS" # VSS or VDS
-$VMNetwork = "VM Network"
+$VirtualSwitchType = "${virtualswitchtype}" # VSS or VDS
+$VMNetwork = "${vmnetwork}"
 $VMDatastore = "datastore1"
 $VMNetmask = "255.255.255.248"
 $VMGateway = "${gateway_ip_addr}"
 $VMDNS = "147.75.207.207"
 $VMNTP = "pool.ntp.org"
-$VMPassword = "VMware1!"
+$VMPassword = "${vmpassword}"
 $VMDomain = "${vm_domain_name}"
 $VMSyslog = "192.168.1.200"
 # Applicable to Nested ESXi only
-$VMSSH = "true"
+$VMSSH = "${vmsshenable}"
 $VMVMFS = "false"
 # Applicable to VC Deployment Target only
 $VMCluster = "Cluster-1"
@@ -103,7 +103,7 @@ $NewVCDatacenterName = "${vc_datacenter_name}"
 $NewVCVSANClusterName = "${vc_vsan_cluster_name}"
 
 # NSX Manager Configuration
-$DeployNSX = 0
+$DeployNSX = ${deploynsx}
 $NSXvCPU = "2" # Reconfigure NSX vCPU
 $NSXvMEM = "8" # Reconfigure NSX vMEM (GB)
 $NSXDisplayName = "nsx63-1"

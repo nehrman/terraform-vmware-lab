@@ -19,7 +19,7 @@ variable "host_name" {
 variable "plan" {
   description = "Defines Packet Plan"
   type        = string
-  default     = "c3.small.x86"
+  default     = "c1.small.x86"
 }
 
 variable "facilities" {
@@ -29,9 +29,9 @@ variable "facilities" {
 }
 
 variable "os" {
-  description = "Defines the type od OS to deploy"
+  description = "Defines the type of OS to deploy"
   type        = string
-  default     = "vmware_esxi_6_7"
+  default     = "vmware_esxi_6_5"
 }
 
 variable "billing_cycle" {
@@ -43,7 +43,7 @@ variable "billing_cycle" {
 variable "ip_block_quantity" {
   description = "Defines the number of allocated /32 addresses"
   type        = number
-  default     = 8
+  default     = 16
 }
 
 variable "ssh_key_name" {
@@ -73,10 +73,10 @@ variable "deployment_target" {
 variable "esx_names" {
   description = "Defines the list of ESXi names used in the deployment."
   type        = list
-  default     = [
-      "esx01",
-      "esx02",
-      "esx03"
+  default = [
+    "esx01",
+    "esx02",
+    "esx03"
   ]
 }
 
@@ -103,4 +103,77 @@ variable "vc_vsan_cluster_name" {
   type        = string
   default     = "VSANCLUSTER01"
 }
+
+variable "esxivCPU" {
+  description = "Defines the number of vCPU per ESXi"
+  type        = string
+  default     = "4"
+}
+
+variable "esxivMEM" {
+  description = "Defines the size of vMEM per ESXi"
+  type        = string
+  default     = "8"
+}
+
+variable "esxicachingvdisk" {
+  description = "Defines the size of Cahcing Disk per ESXi"
+  type        = string
+  default     = "20"
+}
+
+variable "esxicapavdisk" {
+  description = "Defines the size of Capacity Disk per ESXi"
+  type        = string
+  default     = "40"
+}
+
+variable "vcsassopassword" {
+  description = "Defines password uses for VCSA SSO"
+  type        = string
+  default     = "G9kEQ7=T]e|w^-[We"
+}
+
+variable "vcsarootpassword" {
+  description = "Defines password uses for VCSA root access"
+  type        = string
+  default     = "G9kEQ7=T]e|w^-[We"
+}
+
+variable "vcsasshenable" {
+  description = "Defines if ssh access on VCSA is authorized or not"
+  type        = string
+  default     = "false"
+}
+
+variable "vmpassword" {
+  description = "Defines password uses for ESXI root access"
+  type        = string
+  default     = "G9kEQ7=T]e|w^-[We"
+}
+
+variable "vmsshenable" {
+  description = "Defines if ssh access on ESXi is authorized or not"
+  type        = string
+  default     = "false"
+}
+
+variable "deploynsx" {
+  description = "Defines if NSX should be deploy or  not"
+  type        = number
+  default     = 0
+}
+
+variable "virtual_switch_type" {
+  description = "Defines the Virtual Switch Type. Allowed : VSS or VDS"
+  type        = string
+  default     = "VSS"
+}
+
+variable "vm_network" {
+  description = "Defines the Virtual Network Name"
+  type        = string
+  default     = "VM Network"
+}
+
 
